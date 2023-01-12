@@ -1,0 +1,168 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #818181;
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    padding: 20px;
+}
+
+#board {
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    border-collapse: collapse;
+    box-shadow: 2px 1px 10px 2px rgba(43, 43, 43, 0.8);
+}
+
+.col {
+    display: flex;
+    flex-direction: column-reverse;
+}
+.slot {
+    background-color: #c3c3c3;
+    width: 100px;
+    height: 100px;
+    border-collapse: collapse;
+    box-shadow: 2px 1px 10px 2px rgb(128, 128, 128, 0.8);
+}
+
+.hole {
+    background-color: #fdffff;
+    width: 100px;
+    height: 100px;
+    left: 0px;
+    top: 0px;
+    position: relative;
+    visibility: hidden;
+}
+
+.player1 .hole {
+    visibility: visible;
+    background-color: red;
+    background-image: url("/Users/Juliana/Projects/ConnectFour/IMG/Bomba.png");
+}
+.player2 .hole {
+    visibility: visible;
+    background-color: black;
+    background-image: url("/Users/Juliana/Projects/ConnectFour/IMG/redFlag.png");
+}
+
+#panel {
+    height: 600px;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr 3fr 1fr 3fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+h1 {
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bolder;
+    font-size: 45px;
+}
+#bomb {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 2;
+    visibility: hidden;
+}
+
+#bomb.onScreen {
+    transition: visible 1s;
+    visibility: visible;
+}
+
+#flag {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 2;
+    visibility: hidden;
+}
+
+#flag.onScreen {
+    transition: visible 1s;
+    visibility: visible;
+}
+
+#your {
+    grid-row-start: 2;
+    grid-column-start: 4;
+    visibility: visible;
+}
+
+#turn {
+    grid-row-start: 2;
+    grid-column-start: 6;
+    visibility: visible;
+}
+
+button {
+    background-image: url("/Users/Juliana/Projects/ConnectFour/IMG/restart.png");
+    background-color: #818181;
+    width: 200px;
+    height: 75px;
+    grid-row-start: -1;
+    grid-column-start: 2;
+    grid-column-end: -1;
+}
+button .img {
+    left: 0;
+    top: 0;
+}
+
+#shadow {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.2);
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: none;
+}
+
+#shadow.on {
+    display: unset;
+}
+
+#winnerBar1 {
+    position: absolute;
+    background-color: red;
+    height: 100%;
+    width: 50%;
+    max-width: 700px;
+    right: 0;
+    text-align: center;
+    padding: 50px 10px;
+    transform: translateX(100%);
+}
+
+#winnerBar1.on {
+    transform: translateX(0);
+    transition: transform 1s;
+}
+
+#winnerBar2 h1 {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 80px;
+    font-weight: bolder;
+}
+
+#winnerBar2 {
+    position: absolute;
+    background-color: #c3c3c3;
+    height: 100%;
+    width: 50%;
+    max-width: 700px;
+    right: 0;
+    text-align: center;
+    padding: 50px 10px;
+    transform: translateX(100%);
+}
+
+#winnerBar2.on {
+    transform: translateX(0);
+    transition: transform 1s;
+}
